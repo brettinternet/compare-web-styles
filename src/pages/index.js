@@ -1,14 +1,21 @@
 import React from "react"
 import Layout from "../components/layout"
 import styled from "styled-components"
+import beautify from "cssbeautify"
 
 import {
-  Bootstrap,
-  SemanticUi,
-  Fabric,
-  AntDesign,
-  Stripe,
-  Mapbox,
+  BootstrapButton,
+  BootstrapStyles,
+  SemanticUiButton,
+  SemanticUiStyles,
+  FabricButton,
+  FabricStyles,
+  AntDesignButton,
+  AntDesignStyles,
+  StripeButton,
+  StripeStyles,
+  MapboxButton,
+  MapboxStyles,
 } from "sections/buttons"
 
 const buttons = [
@@ -16,37 +23,43 @@ const buttons = [
     name: "Bootstrap",
     type: "CSS",
     license: "MIT",
-    component: Bootstrap,
+    component: BootstrapButton,
+    styles: BootstrapStyles,
   },
   {
     name: "Semantic UI",
     type: "CSS, React",
     license: "MIT",
-    component: SemanticUi,
+    component: SemanticUiButton,
+    styles: SemanticUiStyles,
   },
   {
     name: "Fabric",
     type: "CSS, React",
     license: "MIT/Private",
-    component: Fabric,
+    component: FabricButton,
+    styles: FabricStyles,
   },
   {
     name: "Ant Design",
     type: "React",
     license: "MIT",
-    component: AntDesign,
+    component: AntDesignButton,
+    styles: AntDesignStyles,
   },
   {
     name: "Stripe",
     type: "Private",
     license: "Private",
-    component: Stripe,
+    component: StripeButton,
+    styles: StripeStyles,
   },
   {
     name: "Mapbox",
     type: "Private",
     license: "Private",
-    component: Mapbox,
+    component: MapboxButton,
+    styles: MapboxStyles,
   },
 ]
 
@@ -60,8 +73,8 @@ const IndexPage = ({ location }) => (
   >
     <div className="container mt-4">
       <h1>Buttons</h1>
-      <table className="table table-borderless table-hover">
-        <thead style={{ borderBottom: "1px solid #6c757d" }}>
+      <table className="table table-responsive-sm">
+        <thead>
           <tr>
             <th scope="col">Source</th>
             <th scope="col">Type</th>
@@ -69,26 +82,45 @@ const IndexPage = ({ location }) => (
             <th scope="col" className="text-center">
               Button
             </th>
+            <th scope="col">Styles</th>
           </tr>
         </thead>
         <tbody>
           {buttons.map(
-            ({ name, type, license, component: Component }, index) => (
-              <tr key={index}>
-                <TH scope="row">{name}</TH>
-                <TD className="text-muted">{type}</TD>
-                <TD className="text-muted">{license}</TD>
-                <TD className="text-center">
-                  <Component />
-                </TD>
-              </tr>
-            )
+            ({ name, type, license, component: Component, styles }, index) => {
+              const styleString =
+                styles &&
+                beautify(styles[0].replace(/&/g, "button"), {
+                  indent: "  ",
+                  autosemicolon: true,
+                })
+              return (
+                <tr key={index}>
+                  <TH scope="row">{name}</TH>
+                  <TD className="text-muted">{type}</TD>
+                  <TD className="text-muted">{license}</TD>
+                  <TD className="text-center">
+                    <Component />
+                  </TD>
+                  <TD>
+                    <Pre>
+                      <code>{styleString}</code>
+                    </Pre>
+                  </TD>
+                </tr>
+              )
+            }
           )}
         </tbody>
       </table>
     </div>
   </Layout>
 )
+
+const Pre = styled.pre`
+  word-wrap: break-word;
+  white-space: pre-wrap;
+`
 
 const TH = styled.th`
   && {
