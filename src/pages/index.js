@@ -105,8 +105,16 @@ class IndexPage extends React.Component {
                   return (
                     <tr key={index}>
                       <TH scope="row">{name}</TH>
-                      <TD className="text-muted">{type}</TD>
-                      <TD className="text-muted">{license}</TD>
+                      {type === license ? (
+                        <TD className="text-muted" colSpan={2}>
+                          {type}
+                        </TD>
+                      ) : (
+                        <>
+                          <TD className="text-muted">{type}</TD>
+                          <TD className="text-muted">{license}</TD>
+                        </>
+                      )}
                       <TD className="text-center">
                         <Component />
                       </TD>

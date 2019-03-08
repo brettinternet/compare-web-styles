@@ -14,7 +14,6 @@ export const AntDesignStyles = css`
     border-color: #1890ff;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
     outline: 0;
-    line-height: 1.499;
     position: relative;
     display: inline-block;
     font-weight: 400;

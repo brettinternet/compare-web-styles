@@ -1,14 +1,16 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { Link } from "gatsby"
+import styled from "styled-components"
 import cs from "classnames"
 
 import Logo from "components/Logo"
 import routes from "utils/routes"
+import GithubSvg from "images/github.svg"
 
 const Header = ({ location }) => {
   return (
-    <header className="bg-light">
+    <header>
       <nav className="navbar navbar-expand navbar-light container">
         <Link className="navbar-brand" to="/">
           <Logo className="d-inline-block align-top mr-3" />
@@ -30,6 +32,16 @@ const Header = ({ location }) => {
                 </li>
               )
             })}
+            <Li className="nav-item">
+              <A
+                href="https://github.com/brettinternet/compare-web-styles"
+                className="nav-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <GithubSvg />
+              </A>
+            </Li>
           </ul>
         </div>
       </nav>
@@ -42,3 +54,18 @@ Header.propTypes = {
 }
 
 export default Header
+
+const Li = styled.li`
+  width: 40px;
+`
+
+const A = styled.a`
+  text-decoration: none;
+  fill: #4f4f4f;
+  transition: fill 200ms;
+
+  &:hover {
+    text-decoration: none;
+    fill: #000;
+  }
+`

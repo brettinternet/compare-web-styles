@@ -12,10 +12,7 @@ export const MapboxStyles = css`
     color: #fff;
     background-color: #4264fb;
     width: 180px;
-    padding-left: 24px;
-    padding-right: 24px;
-    padding-top: 12px;
-    padding-bottom: 12px;
+    padding: 12px 24px;
     border-radius: 9999px;
     font-size: 12px;
     line-height: 18px;
