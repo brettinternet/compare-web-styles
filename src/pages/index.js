@@ -1,7 +1,7 @@
 import React from "react"
 import Layout from "../components/layout"
 import styled from "styled-components"
-import beautify from "cssbeautify"
+import beautifyCss from 'utils/beautifyCss'
 
 import {
   BootstrapButton,
@@ -89,11 +89,7 @@ const IndexPage = ({ location }) => (
           {buttons.map(
             ({ name, type, license, component: Component, styles }, index) => {
               const styleString =
-                styles &&
-                beautify(styles[0].replace(/&/g, "button"), {
-                  indent: "  ",
-                  autosemicolon: true,
-                })
+                styles && beautifyCss(styles[0])
               return (
                 <tr key={index}>
                   <TH scope="row">{name}</TH>
