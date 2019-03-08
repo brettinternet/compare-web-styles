@@ -1,0 +1,1 @@
+{"errors":[{"message":"Invalid flags supplied to RegExp constructor 'favicon.png'","locations":[{"line":2,"column":3}],"path":["logo"]}],"data":{"logo":null}}
